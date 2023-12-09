@@ -14,7 +14,7 @@ python = "^3.10"
 
 
 [tool.poetry.scripts]
-gendiff = "gendiff.scripts.gendiff:main"
+gendiff = "gendiff.scripts.script_gendiff:main"
 
 
 [build-system]
