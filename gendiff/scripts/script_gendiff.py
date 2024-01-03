@@ -1,4 +1,4 @@
-from gendiff.gendiff_file import get_gendiff
+from gendiff.argparse import get_gendiff
 
 
 def main():
