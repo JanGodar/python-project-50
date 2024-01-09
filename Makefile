@@ -7,5 +7,5 @@ lint:
 pytest:
 	poetry run pytest
 
-hello:
-	ls -la
+check:
+	pytest lint
