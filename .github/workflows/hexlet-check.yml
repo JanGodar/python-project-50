@@ -22,3 +22,9 @@ jobs:
         uses: hexlet/project-action@release
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
+      
+      - name: linter
+        run: make lint
+
+      - name: pytest
+        run: make pytest
