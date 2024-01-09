@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: linter
-        run: flake8 .
 
       - name: pytest
-        run: pytest .
+        uses: make pytest
+      - name: linter
+        uses: make lint
