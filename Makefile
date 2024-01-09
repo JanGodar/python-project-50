@@ -6,3 +6,6 @@ lint:
 
 pytest:
 	poetry run pytest
+
+hello:
+	ls

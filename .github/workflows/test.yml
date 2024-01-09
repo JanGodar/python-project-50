@@ -1,0 +1,14 @@
+name: hello-world
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:      
+      - name: hello
+        run: make hello
+
+      - name: linter
+        run: make lint
+
+      - name: pytest
+        run: make pytest
