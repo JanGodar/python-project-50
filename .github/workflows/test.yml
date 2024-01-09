@@ -3,12 +3,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:      
-      - name: hello
-        run: ls -la
-
+    steps:
       - name: linter
-        run: make lint
+        run: flake8 .
 
       - name: pytest
-        run: make pytest
+        run: pytest .
