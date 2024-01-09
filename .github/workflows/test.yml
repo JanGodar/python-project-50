@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
       - name: hello
-        run: make hello
+        run: ls -la
 
       - name: linter
         run: make lint

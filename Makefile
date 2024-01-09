@@ -8,4 +8,4 @@ pytest:
 	poetry run pytest
 
 hello:
-	ls
+	ls -la
