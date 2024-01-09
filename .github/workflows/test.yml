@@ -4,9 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: pytest
-        uses: make pytest
+        run: make pytest
       - name: linter
-        uses: make lint
+        run: make lint
