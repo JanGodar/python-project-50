@@ -1,29 +1,36 @@
 import json
-import copy
+
+
+def get_list_diff(json1, json2):
+    ls = []
+    for key, val in json1.items():
+        if key not in json2:
+            ls.append(('- ' + key, val))
+        else:
+            if val == json2[key]:
+                ls.append(('  ' + key, val))
+                del json2[key]
+            else:
+                ls.append(('- ' + key, val))
+                ls.append(('+ ' + key, json2[key]))
+                del json2[key]
+    return ls, json2
+
+
+def get_list_append(ls, json2):
+    for key, val in json2.items():
+        ls.append(('+ ' + key, val))
+    return ls
+
+
+def get_list_dict(ls):
+    return {key: val for key, val in ls}
 
 
 def generate_diff(json1, json2):
-    ls = []
-    json2_copy = copy.copy(json2)
-    for k, val in json1.items():
-        if k not in json2:
-            ls.append(('- ' + k, val))
-        else:
-            if val == json2[k]:
-                ls.append(('  ' + k, val))
-                del json2_copy[k]
-            else:
-                ls.append(('- ' + k, val))
-                ls.append(('+ ' + k, json2_copy[k]))
-                del json2_copy[k]
-    for k, val in json2_copy.items():
-        ls.append(('+ ' + k, val))
 
+    ls, json2 = get_list_diff(json1, json2)
+    ls = get_list_append(ls, json2)
     ls = sorted(ls, key=lambda elem: elem[0][2])
-    end_dict = {}
-    for k, val in ls:
-        if k[0] == ' ':
-            k = k[2:]
-        end_dict[k] = val
+    end_dict = get_list_dict(ls)
     return json.dumps(end_dict, indent=2)
-
