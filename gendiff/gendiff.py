@@ -24,7 +24,12 @@ def get_list_append(ls, json2):
 
 
 def get_list_dict(ls):
-    return {key: val for key, val in ls}
+    end_dict = {}
+    for key, val in ls:
+        if key[:2] == '  ':
+            key = key[2:]
+        end_dict[key] = val
+    return end_dict
 
 
 def generate_diff(json1, json2):
