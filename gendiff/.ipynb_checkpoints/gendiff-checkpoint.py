@@ -47,5 +47,5 @@ def get_diff(dict1, dict2):
 
 
 def generate_diff(dict1, dict2):
-    end_diff_str = get_stylish(get_diff(dict1, dict2))
-    return end_diff_str
+    end_diff_list = get_stylish(get_diff(dict1, dict2))
+    return '\n'.join(end_diff_list)
