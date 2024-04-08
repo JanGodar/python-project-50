@@ -1,6 +1,3 @@
-from gendiff.stylish import get_stylish
-
-
 def get_diff(dict1, dict2):
     key_sorted = sorted(list(set(dict1.keys()) | set(dict2.keys())))
     diff_list = []
@@ -46,6 +43,6 @@ def get_diff(dict1, dict2):
     return diff_list
 
 
-def generate_diff(dict1, dict2):
-    end_diff_str = get_stylish(get_diff(dict1, dict2))
+def generate_diff(dict1, dict2, get_format):
+    end_diff_str = get_format(get_diff(dict1, dict2))
     return end_diff_str
