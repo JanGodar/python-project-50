@@ -37,7 +37,8 @@ def get_diff(dict1, dict2):
             diff_list.append({
                 'key': key,
                 'operation': 'change',
-                'value': (dict1[key], dict2[key])
+                'value': dict1[key],
+                'value_new': dict2[key]
             })
 
     return diff_list

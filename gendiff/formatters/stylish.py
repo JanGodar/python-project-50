@@ -33,9 +33,9 @@ def stylish(diff_list, depth=4):
 
         elif operation == 'change':
             end_list.append(f"{' ' * (depth-2)}- {key}: "
-                            f"{get_value(value[0], depth + 4)}\n")
+                            f"{get_value(value, depth + 4)}\n")
             end_list.append(f"{' ' * (depth-2)}+ {key}: "
-                            f"{get_value(value[1], depth + 4)}\n")
+                            f"{get_value(diction['value_new'], depth + 4)}\n")
 
         else:
             end_list.append(f"{' ' * (depth-2)}{SYMBOLS[operation]} {key}: "
