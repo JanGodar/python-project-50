@@ -7,14 +7,19 @@ def get_value(value):
     return f"'{value}'"
 
 
+def get_key(diction, parent):
+    if parent:
+        return f"{parent}.{diction['key']}"
+    return diction['key']
+
+
 def plain(diff_list, parent=''):
     end_list = []
     for diction in diff_list:
         operation = diction['operation']
-        key = f"{parent}.{diction['key']}" if parent != '' else diction['key']
-        if operation == 'same':
-            continue
-        elif operation == 'nested':
+        key = get_key(diction, parent)
+
+        if operation == 'nested':
             end_list.append(plain(diction['value'], key))
         elif operation == 'added':
             value = get_value(diction['value'])
@@ -24,5 +29,8 @@ def plain(diff_list, parent=''):
         elif operation == 'change':
             value = get_value(diction['value'])
             value_new = get_value(diction['value_new'])
-            end_list.append(f"Property '{key}' was updated. From {value} to {value_new}")
-    return '\n'.join(end_list)
+            end_list.append(
+                f"Property '{key}' was updated. "
+                f"From {value} to {value_new}")
+    result = '\n'.join(end_list)
+    return result
