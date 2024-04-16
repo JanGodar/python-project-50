@@ -17,8 +17,7 @@ def get_file_python(file, path):
     return get_yaml(file)
 
 
-def get_pars(file1, file2):
-
+def get_path(file1, file2):
     file1 = get_file_python(file1, Path(file1).suffix)
     file2 = get_file_python(file2, Path(file2).suffix)
 
