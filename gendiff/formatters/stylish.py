@@ -16,7 +16,7 @@ def get_value(data, depth=4):
         for key, val in data.items():
             val = converse(val)
             res.append(f"{' ' * depth}{key}: {get_value(val, depth + 4)}")
-        res.append(f"{' ' * (depth-4)}}}")
+        res.append(f"{' ' * (depth - 4)}}}")
     return '\n'.join(res)
 
 
@@ -32,13 +32,13 @@ def stylish(diff_list, depth=4):
             end_list.append(f"{' ' * depth}}}\n")
 
         elif operation == 'change':
-            end_list.append(f"{' ' * (depth-2)}- {key}: "
+            end_list.append(f"{' ' * (depth - 2)}- {key}: "
                             f"{get_value(value, depth + 4)}\n")
-            end_list.append(f"{' ' * (depth-2)}+ {key}: "
+            end_list.append(f"{' ' * (depth - 2)}+ {key}: "
                             f"{get_value(diction['value_new'], depth + 4)}\n")
 
         else:
-            end_list.append(f"{' ' * (depth-2)}{SYMBOLS[operation]} {key}: "
+            end_list.append(f"{' ' * (depth - 2)}{SYMBOLS[operation]} {key}: "
                             f"{get_value(value, depth + 4)}\n")
     return ''.join(end_list)
 

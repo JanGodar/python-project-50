@@ -1,11 +1,7 @@
 import json
-import yaml
 from tests.fixtures.fixture import result_string_small, result_string_big
 from tests.fixtures.fixture import result_string_json, result_string_plain
 from gendiff.gendiff import generate_diff
-from gendiff.formatters.stylish import get_stylish
-from gendiff.formatters.plain import plain
-from gendiff.formatters.json import json as get_json
 
 
 shirt1_json = 'tests/fixtures/shirt1.json'
@@ -28,6 +24,7 @@ def test_stylish(result_string_small, result_string_big):
 def test_plain(result_string_plain):
     assert result_string_plain == generate_diff(long1_json, long2_json, 'plain')
     assert result_string_plain == generate_diff(long1_yml, long2_yml, 'plain')
+
 
 
 def test_json(result_string_json):
