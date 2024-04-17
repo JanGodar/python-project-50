@@ -3,11 +3,11 @@ import yaml
 
 
 def get_json(file):
-    return json.load(open(file))
+    return json.load(open(f"tests/fixtures/{file}"))
 
 
 def get_yaml(file):
-    return yaml.safe_load(open(file))
+    return yaml.safe_load(open(f"tests/fixtures/{file}"))
 
 
 def get_file_python(file, path):
