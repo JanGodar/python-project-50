@@ -16,7 +16,7 @@ res_stylish_big = 'tests/fixtures/correct/res_stylish_big.txt'
 res_stylish_small = 'tests/fixtures/correct/res_stylish_small.txt'
 
 
-@pytest.mark.parametrize('file1, file2, format, expected', 
+@pytest.mark.parametrize('file1, file2, format, expected',
                          [
                              pytest.param(shirt1_json, shirt2_json, 'stylish', res_stylish_small),
                              pytest.param(shirt1_yml, shirt2_yml, 'stylish', res_stylish_small),
@@ -29,5 +29,5 @@ res_stylish_small = 'tests/fixtures/correct/res_stylish_small.txt'
                          ])
 def test_generate_diff(file1, file2, format, expected):
     with open(expected, 'r') as file:
-            result = file.read()
-            assert generate_diff(file1, file2, format) == result
+        result = file.read()
+        assert generate_diff(file1, file2, format) == result
