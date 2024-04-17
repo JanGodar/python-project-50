@@ -1,0 +1,116 @@
+[
+    {
+        "key": "common",
+        "operation": "nested",
+        "value": [
+            {
+                "key": "follow",
+                "operation": "added",
+                "value": false
+            },
+            {
+                "key": "setting1",
+                "operation": "same",
+                "value": "Value 1"
+            },
+            {
+                "key": "setting2",
+                "operation": "removed",
+                "value": 200
+            },
+            {
+                "key": "setting3",
+                "operation": "change",
+                "value": true,
+                "value_new": null
+            },
+            {
+                "key": "setting4",
+                "operation": "added",
+                "value": "blah blah"
+            },
+            {
+                "key": "setting5",
+                "operation": "added",
+                "value": {
+                    "key5": "value5"
+                }
+            },
+            {
+                "key": "setting6",
+                "operation": "nested",
+                "value": [
+                    {
+                        "key": "doge",
+                        "operation": "nested",
+                        "value": [
+                            {
+                                "key": "wow",
+                                "operation": "change",
+                                "value": "",
+                                "value_new": "so much"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "key",
+                        "operation": "same",
+                        "value": "value"
+                    },
+                    {
+                        "key": "ops",
+                        "operation": "added",
+                        "value": "vops"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "key": "group1",
+        "operation": "nested",
+        "value": [
+            {
+                "key": "baz",
+                "operation": "change",
+                "value": "bas",
+                "value_new": "bars"
+            },
+            {
+                "key": "foo",
+                "operation": "same",
+                "value": "bar"
+            },
+            {
+                "key": "nest",
+                "operation": "change",
+                "value": {
+                    "key": "value"
+                },
+                "value_new": "str"
+            }
+        ]
+    },
+    {
+        "key": "group2",
+        "operation": "removed",
+        "value": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        }
+    },
+    {
+        "key": "group3",
+        "operation": "added",
+        "value": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        }
+    }
+]
