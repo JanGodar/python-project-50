@@ -1,14 +1,13 @@
 import json
 import yaml
-from pathlib import Path
 
 
 def get_json(file):
-    return json.load(open(f'gendiff/{file}'))
+    return json.load(open(file))
 
 
 def get_yaml(file):
-    return yaml.load(open(f'gendiff/{file}'), Loader=yaml.FullLoader)
+    return yaml.safe_load(open(file))
 
 
 def get_file_python(file, path):
@@ -18,7 +17,7 @@ def get_file_python(file, path):
 
 
 def get_path(file1, file2):
-    file1 = get_file_python(file1, Path(file1).suffix)
-    file2 = get_file_python(file2, Path(file2).suffix)
+    file1 = get_file_python(file1, file1.split('.')[1])
+    file2 = get_file_python(file2, file2.split('.')[1])
 
     return file1, file2

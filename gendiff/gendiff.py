@@ -1,4 +1,5 @@
 from gendiff.formatters.stylish import get_stylish
+from gendiff.parse_module import get_path
 
 
 def get_sorted_key(dict1, dict2):
@@ -48,6 +49,7 @@ def get_diff(dict1, dict2):
     return diff_list
 
 
-def generate_diff(dict1, dict2, get_format=get_stylish):
-    end_diff_str = get_format(get_diff(dict1, dict2))
+def generate_diff(filepath1, filepath2, get_format=get_stylish):
+    file1, file2 = get_path(filepath1, filepath2)
+    end_diff_str = get_format(get_diff(file1, file2))
     return end_diff_str

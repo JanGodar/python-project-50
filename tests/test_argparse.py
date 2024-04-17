@@ -7,27 +7,28 @@ from gendiff.formatters.stylish import get_stylish
 from gendiff.formatters.plain import plain
 from gendiff.formatters.json import json as get_json
 
+shirt1_json = 'tests/fixtures/shirt1.json'
+shirt2_json = 'tests/fixtures/shirt2.json'
+shirt1_yml = 'tests/fixtures/shirt1.yml'
+shirt2_yml = 'tests/fixtures/shirt2.yml'
+long1_json = 'tests/fixtures/long1.json'
+long2_json = 'tests/fixtures/long2.json'
+long1_yml = 'tests/fixtures/long1.yml'
+long2_yml = 'tests/fixtures/long2.yml'
+
 
 def test_stylish(result_string_small, result_string_big):
-    json1 = json.load(open('gendiff/file1.json'))
-    json2 = json.load(open('gendiff/file2.json'))
-    assert result_string_small == generate_diff(json1, json2, get_stylish)
+    assert result_string_small == generate_diff(shirt1_json, shirt2_json, get_stylish)
+    assert result_string_small == generate_diff(shirt1_yml, shirt2_yml, get_stylish)
+    assert result_string_big == generate_diff(long1_json, long2_json, get_stylish)
+    assert result_string_big == generate_diff(long1_yml, long2_yml, get_stylish)
 
-    yaml1 = yaml.load(open('gendiff/filepath1.yml'), Loader=yaml.FullLoader)
-    yaml2 = yaml.load(open('gendiff/filepath2.yml'), Loader=yaml.FullLoader)
-    assert result_string_small == generate_diff(yaml1, yaml2, get_stylish)
-
-    json11 = json.load(open('tests/fixtures/file1.json'))
-    json22 = json.load(open('tests/fixtures/file2.json'))
-    assert result_string_big == generate_diff(json11, json22, get_stylish)
 
 def test_plain(result_string_plain):
-    json1 = json.load(open('tests/fixtures/file1.json'))
-    json2 = json.load(open('tests/fixtures/file2.json'))
-    assert result_string_plain == generate_diff(json1, json2, plain)
+    assert result_string_plain == generate_diff(long1_json, long2_json, plain)
+    assert result_string_plain == generate_diff(long1_yml, long2_yml, plain)
 
 
 def test_json(result_string_json):
-    json1 = json.load(open('tests/fixtures/file1.json'))
-    json2 = json.load(open('tests/fixtures/file2.json'))
-    assert json.dumps(result_string_json, indent=4) == generate_diff(json1, json2, get_json)
+    assert json.dumps(result_string_json, indent=4) == generate_diff(long1_json, long2_json, get_json)
+    assert json.dumps(result_string_json, indent=4) == generate_diff(long1_yml, long2_yml, get_json)
