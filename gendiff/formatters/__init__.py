@@ -6,7 +6,7 @@ from gendiff.formatters.json import json
 def formatter(form):
     if form == 'stylish':
         return get_stylish
-    elif form == 'plain':
+    if form == 'plain':
         return plain
     elif form == 'json':
         return json

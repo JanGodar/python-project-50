@@ -1,6 +1,5 @@
 import argparse
 from gendiff import generate_diff
-from gendiff.formatters import formatter
 
 
 def get_gendiff():
@@ -15,4 +14,4 @@ def get_gendiff():
 
     print(generate_diff(args.first_file,
                         args.second_file,
-                        formatter(args.format)))
+                        args.format))
