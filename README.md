@@ -4,3 +4,12 @@
 <a href="https://codeclimate.com/github/JanGodar/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/245538c9e0f746272089/maintainability" /></a>
 
 <a href="https://codeclimate.com/github/JanGodar/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/245538c9e0f746272089/test_coverage" /></a>
+
+
+### **This is a project Difference Calculator**
+A difference calculator is a program that determines the difference 
+between two data structures.
+
+
+### **asciinema project:**
+https://asciinema.org/a/r5vFhZqo1bzjuXiMctVqrIASq
