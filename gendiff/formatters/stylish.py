@@ -20,7 +20,7 @@ def get_value(data, depth=4):
     return '\n'.join(res)
 
 
-def stylish(diff_list, depth=4):
+def get_stylish(diff_list, depth=4):
     end_list = []
     for diction in diff_list:
         operation = diction['operation']
@@ -28,7 +28,7 @@ def stylish(diff_list, depth=4):
         value = diction['value']
         if operation == 'nested':
             end_list.append(f"{' ' * depth}{key}: {{\n"
-                            f"{stylish(value, depth + 4)}")
+                            f"{get_stylish(value, depth + 4)}")
             end_list.append(f"{' ' * depth}}}\n")
 
         elif operation == 'change':
@@ -43,5 +43,5 @@ def stylish(diff_list, depth=4):
     return ''.join(end_list)
 
 
-def get_stylish(diff):
-    return f"{{\n{stylish(diff)}}}"
+def get_end_stylish(diff):
+    return f"{{\n{get_stylish(diff)}}}"

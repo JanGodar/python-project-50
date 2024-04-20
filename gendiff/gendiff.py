@@ -10,14 +10,12 @@ def is_dict(dict1, dict2, key):
     return isinstance(dict1[key], dict) and isinstance(dict2[key], dict)
 
 
-def get_diff_dict(key, operation, value1, value2='None'):
+def get_diff_dict(key, operation, value1):
     diff_dict = {
         'key': key,
         'operation': operation,
         'value': value1
     }
-    if value2 != 'None':
-        diff_dict['value_new'] = value2
     return diff_dict
 
 
@@ -36,7 +34,9 @@ def get_diff_val(key, dict1, dict2):
         return get_diff_dict(key, 'same', dict1[key])
 
     elif dict1[key] != dict2[key]:
-        return get_diff_dict(key, 'change', dict1[key], dict2[key])
+        diction = get_diff_dict(key, 'change', dict1[key])
+        diction['value_new'] = dict2[key]
+        return diction
 
 
 def get_diff(dict1, dict2):

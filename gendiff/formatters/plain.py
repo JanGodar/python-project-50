@@ -15,14 +15,14 @@ def get_key(diction, parent):
     return diction['key']
 
 
-def plain(diff_list, parent=''):
+def get_plain(diff_list, parent=''):
     end_list = []
     for diction in diff_list:
         operation = diction['operation']
         key = get_key(diction, parent)
 
         if operation == 'nested':
-            end_list.append(plain(diction['value'], key))
+            end_list.append(get_plain(diction['value'], key))
         elif operation == 'added':
             value = get_value(diction['value'])
             end_list.append(f"Property '{key}' was added with value: {value}")

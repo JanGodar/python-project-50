@@ -2,18 +2,10 @@ import json
 import yaml
 
 
-def get_json(file):
-    return json.load(open(file))
-
-
-def get_yaml(file):
-    return yaml.safe_load(open(file))
-
-
 def get_file_python(file, path):
     if path == '.json':
-        return get_json(file)
-    return get_yaml(file)
+        return json.load(open(file))
+    return yaml.safe_load(open(file))
 
 
 def get_path(file1, file2):

@@ -30,8 +30,11 @@ options:
 
 ### **How to install**
 git clone git@github.com:JanGodar/python-project-50.git
+
 cd python-project-50
+
 poetry build
+
 make package-install
 
 ### **asciinema project:**

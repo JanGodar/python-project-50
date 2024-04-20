@@ -1,12 +1,14 @@
-from gendiff.formatters.stylish import get_stylish
-from gendiff.formatters.plain import plain
-from gendiff.formatters.json import json
+from gendiff.formatters.stylish import get_end_stylish
+from gendiff.formatters.plain import get_plain
+from gendiff.formatters.json import get_json
 
 
 def formatter(form):
     if form == 'stylish':
-        return get_stylish
+        return get_end_stylish
     if form == 'plain':
-        return plain
+        return get_plain
     elif form == 'json':
-        return json
+        return get_json
+    else:
+        raise ValueError
