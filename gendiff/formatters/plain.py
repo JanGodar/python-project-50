@@ -1,11 +1,11 @@
 def get_value(value):
+    correct_values = {None: 'null', True: 'true', False: 'false'}
     if isinstance(value, dict):
         return '[complex value]'
-    correct_values = {None: 'null', True: 'true', False: 'false'}
     if isinstance(value, (bool, type(None))):
         return correct_values[value]
-    if isinstance(value, (int, float)):
-        return value
+#    if isinstance(value, (int, float)):
+#        return value
     return f"'{value}'"
 
 
