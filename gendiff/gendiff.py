@@ -51,6 +51,7 @@ def get_diff(dict1, dict2):
 
 def generate_diff(filepath1, filepath2, get_format='stylish'):
     get_format = formatter(get_format)
-    file1, file2 = get_path(filepath1, filepath2)
+    file1 = get_path(filepath1)
+    file2 = get_path(filepath2)
     end_diff_str = get_format(get_diff(file1, file2))
     return end_diff_str

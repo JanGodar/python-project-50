@@ -2,14 +2,15 @@ import json
 import yaml
 
 
-def get_file_python(file, path):
-    if path == '.json':
-        return json.load(open(file))
-    return yaml.safe_load(open(file))
+def get_pars_str(file, extension):
+    if extension == 'json':
+        return json.load(file)
+    elif extension in ('yaml', 'yml'):
+        return yaml.safe_load(file)
+    else:
+        raise ValueError
 
 
-def get_path(file1, file2):
-    file1 = get_file_python(file1, file1.split('.')[1])
-    file2 = get_file_python(file2, file2.split('.')[1])
-
-    return file1, file2
+def get_path(file):
+    file1 = get_pars_str(open(file), file.split('.')[1])
+    return file1

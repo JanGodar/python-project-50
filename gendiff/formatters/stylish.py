@@ -37,9 +37,11 @@ def get_stylish(diff_list, depth=4):
             end_list.append(f"{' ' * (depth - 2)}+ {key}: "
                             f"{get_value(diction['value_new'], depth + 4)}\n")
 
-        else:
+        elif operation in ['same', 'removed', 'added']:
             end_list.append(f"{' ' * (depth - 2)}{SYMBOLS[operation]} {key}: "
                             f"{get_value(value, depth + 4)}\n")
+        else:
+            raise ValueError
     return ''.join(end_list)
 
 

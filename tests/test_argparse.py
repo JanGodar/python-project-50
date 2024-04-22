@@ -5,14 +5,14 @@ from gendiff.gendiff import generate_diff
 
 @pytest.mark.parametrize('file1, file2, format, expected',
                          [
-                             pytest.param('shirt1.json', 'shirt2.json', 'stylish', 'res_stylish_small.txt'),
-                             pytest.param('shirt1.yml', 'shirt2.yml', 'stylish', 'res_stylish_small.txt'),
-                             pytest.param('long1.json', 'long2.json', 'stylish', 'res_stylish_big.txt'),
-                             pytest.param('long1.yml', 'long2.yml', 'stylish', 'res_stylish_big.txt'),
-                             pytest.param('long1.json', 'long2.json', 'plain', 'res_plain.txt'),
-                             pytest.param('long1.yml', 'long2.yml', 'plain', 'res_plain.txt'),
-                             pytest.param('long1.json', 'long2.json', 'json', 'res_json.txt'),
-                             pytest.param('long1.yml', 'long2.yml', 'json', 'res_json.txt')
+                             ('shirt1.json', 'shirt2.json', 'stylish', 'res_stylish_small.txt'),
+                             ('shirt1.yml', 'shirt2.yml', 'stylish', 'res_stylish_small.txt'),
+                             ('long1.json', 'long2.json', 'stylish', 'res_stylish_big.txt'),
+                             ('long1.yml', 'long2.yml', 'stylish', 'res_stylish_big.txt'),
+                             ('long1.json', 'long2.json', 'plain', 'res_plain.txt'),
+                             ('long1.yml', 'long2.yml', 'plain', 'res_plain.txt'),
+                             ('long1.json', 'long2.json', 'json', 'res_json.txt'),
+                             ('long1.yml', 'long2.yml', 'json', 'res_json.txt')
                          ])
 def test_generate_diff(file1, file2, format, expected):
     file1 = get_path(file1)
