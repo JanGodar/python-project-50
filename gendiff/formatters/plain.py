@@ -15,14 +15,34 @@ def get_key(diction, parent):
     return diction['key']
 
 
-def get_value_for_list(diction, key, operation):
+def get_str_added(diction, key):
     value = get_value(diction['value'])
+    return f"Property '{key}' was added with value: {value}"
+
+
+def get_str_removed(diction, key):
+    return f"Property '{key}' was removed"
+
+
+def get_str_nested(diction, key):
+    return get_plain(diction['value'], key)
+
+
+def get_str_change(diction, key):
+    value = get_value(diction['value'])
+    value_new = get_value(diction['value_new'])
+    return f"Property '{key}' was updated. From {value} to {value_new}"
+
+
+def get_value_for_list(diction, key, operation):
     all_dict = {
-        'added': f"Property '{key}' was added with value: {value}",
-        'removed': f"Property '{key}' was removed",
+        'added': get_str_added,
+        'removed': get_str_removed,
+        'nested': get_str_nested,
+        'change': get_str_change
     }
     if operation in all_dict:
-        return all_dict[operation]
+        return all_dict[operation](diction, key)
     else:
         raise ValueError
 
@@ -32,19 +52,8 @@ def get_plain(diff_list, parent=''):
     for diction in diff_list:
         operation = diction['operation']
         key = get_key(diction, parent)
-
         if operation == 'same':
             continue
-        elif operation == 'nested':
-            end_list.append(get_plain(diction['value'], key))
-        elif operation == 'change':
-            value = get_value(diction['value'])
-            value_new = get_value(diction['value_new'])
-            end_list.append(
-                f"Property '{key}' was updated. "
-                f"From {value} to {value_new}"
-            )
-        else:
-            end_list.append(get_value_for_list(diction, key, operation))
-    result = '\n'.join(end_list)
-    return result
+        end_list.append(get_value_for_list(diction, key, operation))
+
+    return '\n'.join(end_list)
